@@ -2,11 +2,92 @@
 
 <body>
 
+<link rel="stylesheet" href="style.css">
+
 <title>Fake Funny Dox</title>
 
-<h1>Fake Funny Dox (By Polybagel)</h1>
+<div class="container">
+    <h1>Fake Funny Dox</h1>
+    <h4>By <a href="https://www.youtube.com/channel/UCOQd4XAXiLc0u4VJg3WwfhQ">Polybagel</a></h4>
+</div>
 
+<br>
 
+<div class="parentcontainer">
+    <div class="container" style="text-align:left;">
+        <p>Click the regenerate button to get a fresh dox!<br>(Result is automatically copied to the clipboard)</p>
+
+<pre><code id="dox">Nothing genereted yet...</code></pre>
+        <div style="text-align: center;">
+            <button onclick="regen()">Regenerate</button>
+        </div>
+    </div>
+</div>
+
+<script>
+
+function copyStringToClipboard (str) {
+   // Create new element
+   var el = document.createElement('textarea');
+   // Set value (string to be copied)
+   el.value = str;
+   // Set non-editable to avoid focus and move outside of view
+   el.setAttribute('readonly', '');
+   el.style = {position: 'absolute', left: '-9999px'};
+   document.body.appendChild(el);
+   // Select text inside element
+   el.select();
+   // Copy text to clipboard
+   document.execCommand('copy');
+   // Remove temporary element
+   document.body.removeChild(el);
+}
+
+function randomNumber(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+function randomByte() {
+    return Math.floor(randomNumber(100,255));
+}
+
+function randomDegree() {
+    return randomNumber(-180,180).toFixed(3) + "°";
+}
+
+function randomWeight() {
+    return randomNumber(80,150).toFixed(3) + " kg";
+}
+
+function randomHeight() {
+    return Math.floor(randomNumber(6,4)) + "\'" + Math.floor(randomNumber(1,11)) + "\"";
+}
+
+function randomSpeed() {
+    return randomNumber(0,10).toFixed(2) + " mph";
+}
+
+function randomCreditScore() {
+    return Math.floor(randomNumber(-3000000,1235));
+}
+
+function regen() {
+    result = "IP: " + randomByte() + "." + randomByte() + "." + randomByte() + "." + randomByte() + "\n" +
+                                               "N: " + randomDegree() + "\n" +
+                                               "W: " + randomDegree() + "\n" +
+                                               "Weight: " + randomWeight() + "\n" +
+                                               "Height: " + randomHeight() + "\n" +
+                                               "Speed: " + randomSpeed() + "\n" +
+                                               "Credit Score: " + randomCreditScore();
+
+    document.getElementById("dox").innerHTML = result;
+
+    copyStringToClipboard(result);
+
+    return result;
+}
+
+</script>
 
 </body>
 

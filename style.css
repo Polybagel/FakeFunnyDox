@@ -1,0 +1,46 @@
+.container{
+  background-color: #f0f0f0;
+  padding: 15px;
+  border-radius: 15px;
+  text-align:center;
+  margin: auto;
+}
+.parentcontainer {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin: auto;
+  height: 75%; /* lmao this is not responsive on mobile but i DONT CARE */
+}
+img {
+  border-radius: 10px;
+  width: 50%;
+  box-shadow: 10px 10px 5px grey;
+}
+a:link {
+  color: rgba(3, 127, 252, 1);
+  background-color: rgba(3, 127, 252, 0.1);
+  text-decoration: none;
+}
+
+a:visited {
+  color: rgba(173, 3, 252, 1);
+  background-color: rgba(173, 3, 252, 0.1);
+  text-decoration: none;
+}
+a {
+  padding: 3px;
+  border-radius: 5px;
+}
+
+body {
+  font-family: Tahoma, sans-serif;
+}
+
+pre code {
+  background-color: #ccc;
+  border: 1px solid #999;
+  display: block;
+  padding: 20px;
+  border-radius: 5px;
+}
