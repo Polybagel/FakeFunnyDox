@@ -43,7 +43,7 @@
         await navigator.clipboard.writeText(str);
       }
 
-      const getRanHex = (size) => {
+      function getRanHex(size) {
         let result = [];
         let hexRef = [
           "0",
@@ -68,7 +68,7 @@
           result.push(hexRef[Math.floor(Math.random() * 16)]);
         }
         return result.join("");
-      };
+      }
 
       function randomNumber(min, max) {
         return Math.random() * (max - min) + min;
