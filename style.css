@@ -1,9 +1,21 @@
-.container{
+.container {
   background-color: #f0f0f0;
   padding: 15px;
   border-radius: 15px;
-  text-align:center;
+  text-align: center;
   margin: auto;
+}
+
+.container2 {
+  background-color: #f0f0f0;
+  padding: 15px;
+  border-radius: 15px;
+  text-align: left;
+  margin: auto;
+}
+
+#regenbutton {
+  text-align: center;
 }
 .parentcontainer {
   display: flex;
