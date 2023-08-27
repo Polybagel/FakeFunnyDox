@@ -1,113 +1,181 @@
-<html>
+<!DOCTYPE html>
 
-<body>
-
-<link rel="stylesheet" href="style.css">
-
-<title>Fake Funny Dox</title>
-
-<div class="container">
-    <h1>Fake Funny Dox</h1>
-    <h4>By <a href="https://www.youtube.com/channel/UCOQd4XAXiLc0u4VJg3WwfhQ">Polybagel</a></h4>
-</div>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-<div class="parentcontainer">
-    <div class="container" style="text-align:left;">
-        <p>Click the regenerate button to get a fresh dox!<br>(Result is automatically copied to the clipboard)</p>
-
-<pre><code id="dox">Nothing genereted yet...</code></pre>
-        <div style="text-align: center;">
-            <button onclick="regen()">Regenerate</button>
-        </div>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Fake Funny Dox</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Fake Funny Dox</h1>
+      <h4>
+        By
+        <a href="https://www.youtube.com/@Polybagel">Polybagel</a>
+      </h4>
     </div>
-</div>
 
-<script>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
-function copyStringToClipboard (str) {
-   // Create new element
-   var el = document.createElement('textarea');
-   // Set value (string to be copied)
-   el.value = str;
-   // Set non-editable to avoid focus and move outside of view
-   el.setAttribute('readonly', '');
-   el.style = {position: 'absolute', left: '-9999px'};
-   document.body.appendChild(el);
-   // Select text inside element
-   el.select();
-   // Copy text to clipboard
-   document.execCommand('copy');
-   // Remove temporary element
-   document.body.removeChild(el);
-}
+    <div class="parentcontainer">
+      <div class="container2">
+        <p>
+          Click the regenerate button to get a fresh dox!<br />(Result is
+          automatically copied to the clipboard)
+        </p>
 
-const getRanHex = size => {
-  let result = [];
-  let hexRef = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
+        <pre><code id="dox">Nothing genereted yet...</code></pre>
+        <div id="regenbutton">
+          <button onclick="regen()">Regenerate</button>
+        </div>
+      </div>
+    </div>
 
-  for (let n = 0; n < size; n++) {
-    result.push(hexRef[Math.floor(Math.random() * 16)]);
-  }
-  return result.join('');
-}
+    <script>
+      async function copyStringToClipboard(str) {
+        await navigator.clipboard.writeText(str);
+      }
 
-function randomNumber(min, max) {
-    return Math.random() * (max - min) + min;
-}
+      function getRanHex(size) {
+        let result = [];
+        let hexRef = [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+        ];
 
-function randomByte() {
-    return Math.floor(randomNumber(0,255));
-}
+        for (let n = 0; n < size; n++) {
+          result.push(hexRef[Math.floor(Math.random() * 16)]);
+        }
+        return result.join("");
+      }
 
-function randomDegree() {
-    return randomNumber(-180,180).toFixed(3) + "°";
-}
+      function randomNumber(min, max) {
+        return Math.random() * (max - min) + min;
+      }
 
-function randomWeight() {
-    return randomNumber(80,150).toFixed(3) + " kg";
-}
+      function randomByte() {
+        return Math.floor(randomNumber(0, 255));
+      }
 
-function randomHeight() {
-    return Math.floor(randomNumber(6,4)) + "\'" + Math.floor(randomNumber(1,11)) + "\"";
-}
+      function randomDegree() {
+        return randomNumber(-180, 180).toFixed(3) + "°";
+      }
 
-function randomSpeed() {
-    return randomNumber(0,10).toFixed(2) + " mph";
-}
+      function randomWeight() {
+        return randomNumber(80, 150).toFixed(3) + " kg";
+      }
 
-function randomCreditScore() {
-    return Math.floor(randomNumber(-3000000,1235));
-}
+      function randomHeight() {
+        return (
+          Math.floor(randomNumber(6, 4)) +
+          "'" +
+          Math.floor(randomNumber(1, 11)) +
+          '"'
+        );
+      }
 
-function regen() {
-    result = "IPv4: " + randomByte() + "." + randomByte() + "." + randomByte() + "." + randomByte() + "\n" +
-    "IPv6: " + getRanHex(4)+":"+getRanHex(4)+":"+getRanHex(4)+":"+getRanHex(4)+":"+getRanHex(4)+":"+getRanHex(4)+":"+getRanHex(4)+":"+getRanHex(4) + "\n" +
-                                               "N: " + randomDegree() + "\n" +
-                                               "W: " + randomDegree() + "\n" +
-                                               "Weight: " + randomWeight() + "\n" +
-                                               "Height: " + randomHeight() + "\n" +
-                                               "Speed: " + randomSpeed() + "\n" +
-                                               "Credit Score: " + randomCreditScore() + "\n" +
-                                               "SS Number: " + Math.floor(randomNumber(100,999))+"-"+Math.floor(randomNumber(10,99))+"-"+Math.floor(randomNumber(1000,9999)) + "\n" +
-                                               "MAC Address: " + getRanHex(2)+":"+getRanHex(2)+":"+getRanHex(2)+":"+getRanHex(2)+":"+getRanHex(2)+":"+getRanHex(2) + "\n" +
-                                               "DNS: 8.8.8.8";
+      function randomSpeed() {
+        return randomNumber(0, 10).toFixed(2) + " mph";
+      }
 
-    document.getElementById("dox").innerHTML = result;
+      function randomCreditScore() {
+        return Math.floor(randomNumber(300, 850));
+      }
 
-    copyStringToClipboard(result);
+      function regen() {
+        result =
+          "IPv4: " +
+          randomByte() +
+          "." +
+          randomByte() +
+          "." +
+          randomByte() +
+          "." +
+          randomByte() +
+          "\n" +
+          "IPv6: " +
+          getRanHex(4) +
+          ":" +
+          getRanHex(4) +
+          ":" +
+          getRanHex(4) +
+          ":" +
+          getRanHex(4) +
+          ":" +
+          getRanHex(4) +
+          ":" +
+          getRanHex(4) +
+          ":" +
+          getRanHex(4) +
+          ":" +
+          getRanHex(4) +
+          "\n" +
+          "N: " +
+          randomDegree() +
+          "\n" +
+          "W: " +
+          randomDegree() +
+          "\n" +
+          "Weight: " +
+          randomWeight() +
+          "\n" +
+          "Height: " +
+          randomHeight() +
+          "\n" +
+          "Speed: " +
+          randomSpeed() +
+          "\n" +
+          "Credit Score: " +
+          randomCreditScore() +
+          "\n" +
+          "SS Number: " +
+          Math.floor(randomNumber(100, 999)) +
+          "-" +
+          Math.floor(randomNumber(10, 99)) +
+          "-" +
+          Math.floor(randomNumber(1000, 9999)) +
+          "\n" +
+          "MAC Address: " +
+          getRanHex(2) +
+          ":" +
+          getRanHex(2) +
+          ":" +
+          getRanHex(2) +
+          ":" +
+          getRanHex(2) +
+          ":" +
+          getRanHex(2) +
+          ":" +
+          getRanHex(2) +
+          "\n" +
+          "DNS: 8.8.8.8";
 
-    return result;
-}
+        document.getElementById("dox").innerHTML = result;
 
-</script>
+        copyStringToClipboard(result);
 
-</body>
-
+        return result;
+      }
+    </script>
+  </body>
 </html>
